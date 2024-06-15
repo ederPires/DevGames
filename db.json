@@ -1,0 +1,7 @@
+{
+  "games": [
+    { "id": 1, "name": "Jogo 1", "category": "Ação", "background_image": "https://br.freepik.com/fotos-gratis/formas-geometricas-futuristas-se-conectam-para-design-abstrato-moderno-gerado-por-ia_41594626.htm#query=link&position=3&from_view=keyword&track=sph&uuid=59e1e233-0d7d-4f5e-9a16-0621efb051c0" },
+    { "id": 2, "name": "Jogo 2", "category": "Aventura", "background_image": "https://img.freepik.com/fotos-premium/computacao-em-nuvem-e-tecnologia-de-armazenamento-de-dados-para-inovacao-futura_31965-33452.jpg?size=626&ext=jpg&ga=GA1.1.480101299.1718417497&semt=sph" },
+    { "id": 3, "name": "Jogo 3", "category": "Estratégia", "background_image": "https://img.freepik.com/fotos-gratis/ilustracao-3d-de-fundo-azul-e-roxo-futurista-techno-sci-fi-luzes-cool_181624-57587.jpg?size=626&ext=jpg&ga=GA1.1.480101299.1718417497&semt=sph" }
+  ]
+}

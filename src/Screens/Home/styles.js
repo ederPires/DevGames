@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#050B18',
     padding: 10,
-    position: 'relative',
+    position: 'relative', // ocupa a largura disponível
   },
   centeredContent: {
     flex: 1,
@@ -47,6 +47,8 @@ const styles = StyleSheet.create({
     top: 20,
     left: 13,
     zIndex: 10, // Adicionado zIndex
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   logo: {
     width: 145,
@@ -55,12 +57,34 @@ const styles = StyleSheet.create({
     marginTop: 46,
     marginLeft: 13
   },
+  save: {
+    width: 37,
+    height: 37,
+    marginTop: 45,
+    marginLeft: 152
+  },
+  inputContainer: {
+    marginTop: 100,
+    width: 303,
+    height: 55,
+    flexDirection: 'row',
+    justifyContent: 'space-between', // Opcional: para adicionar espaço entre os inputs
+  },
   searchInput: {
     backgroundColor: '#fff',
     padding: 10,
     borderRadius: 5,
     marginTop: 10,
-    width: '100%',
+    width: '100%', // Garante que ocupe toda a largura disponível
+    color: '#ffff', // Cor do texto (pode ser alterada para 'white' se preferir)
+    backgroundColor: '#1F2430',
+    borderRadius: 20,
+  },
+  search: {
+    width: 31,
+    height: 31,
+    marginTop: 15,
+    marginLeft: 15,
   },
   categoryList: {
     flexDirection: 'row',
@@ -73,6 +97,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     backgroundColor: '#ddd',
+    padding: 7
   },
   selectedCategoryItem: {
     backgroundColor: '#007bff', // Cor de fundo quando a categoria está selecionada
