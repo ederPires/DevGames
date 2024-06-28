@@ -1,14 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import Navigation from './src/navigation/AppNavigator';
+import { StyleSheet } from 'react-native';
+import { ApolloProvider } from '@apollo/client';
+import client from './src/apollo/apollo-client';
+import Navigation from './src/navigation/AppNavigator'; // Ajuste o caminho conforme a estrutura do seu projeto
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <ApolloProvider client={client}>
       <Navigation />
       <StatusBar style="auto" />
-    </View>
+    </ApolloProvider>
   );
 }
 

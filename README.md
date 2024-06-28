@@ -4,5 +4,9 @@
 ```Javascript
 npx expo start // rodar o app
 
+npm install @apollo/client graphql // pacote para o apollo client
+
+npm audit fix // correções
+
 
 ```
