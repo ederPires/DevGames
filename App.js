@@ -1,22 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet } from 'react-native';
-import { ApolloProvider } from '@apollo/client';
-import client from './src/apollo/apollo-client';
-import Navigation from './src/navigation/AppNavigator'; // Ajuste o caminho conforme a estrutura do seu projeto
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import 'react-native-gesture-handler';
 
-export default function App() {
+// Importe seus componentes de tela
+//import HomeScreen from './src/screens/home/HomeScreen';
+//<Stack.Screen name="Home" component={HomeScreen} />
+import GamesScreen from './src/screens/games/GamesScreen';
+import { ApolloProvider } from '@apollo/client'; // Import ApolloProvider
+import client from './src/apollo/apollo-client'; // Import the Apollo Client instance
+
+// Crie uma pilha de navegação
+const Stack = createStackNavigator();
+
+function App() {
   return (
     <ApolloProvider client={client}>
-      <Navigation />
-      <StatusBar style="auto" />
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Game">
+            <Stack.Screen name="Game" component={GamesScreen} />
+          </Stack.Navigator>
+      </NavigationContainer>
+
     </ApolloProvider>
+
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});
+//<StatusBar style="auto" />
+export default App;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, FlatList, Image, SafeAreaView, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, FlatList, Image, SafeAreaView, TextInput, TouchableOpacity, Button } from 'react-native';
+import { useNavigation } from '@react-navigation/native'; // Importe o hook useNavigation
 import api from '../../utils/api-client'; // Certifique-se de que o caminho está correto
 import styles from './styles'; // Importar os estilos
 import logo from '../../assets/images/logo.png';
@@ -18,7 +19,9 @@ const fetchWithRetry = async (url, retries = 3, delay = 1000) => {
   }
 };
 
-export default function Home() {
+export default function HomeScreen() {
+  const navigation = useNavigation(); // Usando o hook useNavigation para acessar a propriedade navigation
+
   const [games, setGames] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -51,6 +54,14 @@ export default function Home() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Tela Home</Text>
+        <Button
+          title="Ir para Games List"
+          onPress={() => navigation.navigate('GamesScreen')}
+        />
+      </View>
+
       <View style={styles.logoContainer}>
         <Image source={logo} style={styles.logo} />
         <Image source={save} style={styles.save} />

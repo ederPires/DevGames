@@ -8,5 +8,22 @@ npm install @apollo/client graphql // pacote para o apollo client
 
 npm audit fix // correções
 
+//Erro na conexão
+yarn add @react-native-async-storage/async-storage
+
+yarn add react-native-gesture-handler
+
+npm install @apollo/client
+
+npm start -- --reset-cache
+
+npm install -g metro // atualizar bundler
+
+npx expo prebuild // regenera diretórios nativos
+npm install -g expo-cli
+expo upgrade
+
+npm install subscriptions-transport-ws
+npm install graphql-ws
 
 ```
