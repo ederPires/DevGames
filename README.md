@@ -1,5 +1,17 @@
-[Projeto no Figma](https://www.figma.com/design/nm1k9zoVt2vdBZV6RtmWAk/Game-App-Desafio?node-id=0-1&t=4gqfBTTGvR3FvLxg-0)
-[API](https://api.rawg.io/api)
+## App DevGame
+
+> Desafio fabrica de apps, criar um aplicativo para exibir informações sobre games.
+
+## Índice
+
+1. [Links](#links)
+2. [Configuração](#configuração)
+
+## Links
+* [Projeto no Figma](https://www.figma.com/design/nm1k9zoVt2vdBZV6RtmWAk/Game-App-Desafio?node-id=0-1&t=4gqfBTTGvR3FvLxg-0)
+* [API](https://api.rawg.io/api)
+
+## Configuração
 
 ```Javascript
 npx expo start // rodar o app
