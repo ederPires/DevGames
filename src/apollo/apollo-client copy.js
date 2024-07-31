@@ -4,10 +4,6 @@ import { getMainDefinition } from '@apollo/client/utilities';
 import { setContext } from '@apollo/client/link/context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { onError } from '@apollo/client/link/error';
-import ReconnectingWebSocket from 'react-native-websocket';
-
-// Polyfill WebSocket global object
-global.WebSocket = ReconnectingWebSocket;
 
 const errorLink = onError(({ networkError, graphQLErrors }) => {
   if (graphQLErrors) {
@@ -24,14 +20,18 @@ const errorLink = onError(({ networkError, graphQLErrors }) => {
 
 const httpLink = createHttpLink({
   uri: 'http://192.168.0.18:4000/graphql',
+  //uri: 'http://localhost:4000/graphql',
 });
 
+/* remover websocket
 const wsLink = new WebSocketLink({
   uri: 'ws://192.168.0.18:4000/graphql',
+  //uri: 'ws://localhost:4000/graphql',
   options: {
     reconnect: true,
   },
 });
+*/
 
 const authLink = setContext(async (_, { headers }) => {
   const token = await AsyncStorage.getItem('token');
@@ -48,12 +48,12 @@ const splitLink = split(
     const definition = getMainDefinition(query);
     return definition.kind === 'OperationDefinition' && definition.operation === 'subscription';
   },
-  wsLink,
+  //wsLink,
   authLink.concat(httpLink),
 );
 
 const client = new ApolloClient({
-  link: errorLink.concat(splitLink),
+  link: errorLink.concat(splitLink), // Concatenate errorLink with splitLink
   cache: new InMemoryCache(),
 });
 

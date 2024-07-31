@@ -1,10 +1,11 @@
 // CreateGameScreen.js
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker';
 import { useQuery, useMutation } from '@apollo/client';
 import { GAMES_QUERY, GENRES_QUERY, CREATE_GAME_MUTATION } from '../../utils/queries';
-import styles from './styles'; // Importar os estilos
+import styles from './styles';
+import { format } from 'date-fns';
 
 const CreateGameScreen = ({ navigation }) => {
   const [name, setName] = useState('');
@@ -19,22 +20,24 @@ const CreateGameScreen = ({ navigation }) => {
 
   const [createGame, { loading, error }] = useMutation(CREATE_GAME_MUTATION, {
     onCompleted: () => {
-      navigation.goBack(); // Navega de volta para a tela anterior após a criação do jogo
+      navigation.goBack();
     },
-    refetchQueries: [{ query: GAMES_QUERY }], // Reexecuta a query GetGames após a mutação
+    refetchQueries: [{ query: GAMES_QUERY }],
     onError: (error) => {
       console.error('Error creating game:', error);
     },
   });
 
   const handleSubmit = () => {
+    const formattedDate = format(new Date(dateRelease), "yyyy-MM-dd'T'HH:mm:ss.SSSxxx");
+
     createGame({
       variables: {
         data: {
           name,
           description,
-          dateRelease,
-          rating: parseFloat(rating), // Certifique-se de que o rating é um número
+          dateRelease: formattedDate,
+          rating: parseFloat(rating),
           site,
           urlImage,
           genreId,
@@ -44,7 +47,7 @@ const CreateGameScreen = ({ navigation }) => {
   };
 
   if (genresLoading) return <Text>Loading genres...</Text>;
-  if (genresError) return <Text>Error loading genres.</Text>;
+  if (genresError) return <Text>Error loading genres: {genresError.message}</Text>;
 
   return (
     <View style={styles.container}>
@@ -91,8 +94,8 @@ const CreateGameScreen = ({ navigation }) => {
         style={styles.picker}
         onValueChange={(itemValue) => setGenreId(itemValue)}
       >
-        {genresData.genres.map((genreId) => (
-          <Picker.Item key={genreId.id} label={genreId.name} value={genreId.id} />
+        {genresData.genres.map((genre) => (
+          <Picker.Item key={genre.id} label={genre.name} value={genre.id} />
         ))}
       </Picker>
       {error && <Text style={styles.errorText}>Error creating game. Please try again.</Text>}
