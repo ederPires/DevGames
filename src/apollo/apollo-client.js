@@ -19,11 +19,13 @@ const errorLink = onError(({ networkError, graphQLErrors }) => {
 });
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3000/graphql',
+  uri: 'http://192.168.0.18:4000/graphql',
+  //uri: 'http://localhost:4000/graphql',
 });
 
 const wsLink = new WebSocketLink({
-  uri: 'ws://localhost:3000/graphql',
+  uri: 'ws://192.168.0.18:4000/graphql',
+  //uri: 'ws://localhost:4000/graphql',
   options: {
     reconnect: true,
   },
